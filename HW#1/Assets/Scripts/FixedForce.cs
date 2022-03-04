@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FixedForce : MonoBehaviour
 {
+    Rigidbody body;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        body = GetComponent<Rigidbody>();    
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        body.AddForce(3, 3, 3);
     }
 }
