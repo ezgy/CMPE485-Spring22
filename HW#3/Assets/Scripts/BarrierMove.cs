@@ -11,44 +11,45 @@ public class BarrierMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(Move());
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(Move());
+        
     }
 
     IEnumerator Move()
     {
-        duration = Random.Range(0.5f, 5f);
-        Vector3 move = transform.position;
-        Vector3 start = transform.position;
-        if (isdown)
+        while (true)
         {
-            aimedPos = new Vector3(0,9,0);
-            while (transform.position.y < aimedPos.y)
+            duration = Random.Range(0.03f, 3f);
+            Vector3 move = transform.position;
+            Vector3 start = transform.position;
+            if (isdown)
             {
-                print(aimedPos.y);
-                move.y += 0.2f;
-                transform.position = move;
-                yield return new WaitForSecondsRealtime(5);
+                aimedPos = new Vector3(0, 9, 0);
+                while (transform.position.y < aimedPos.y)
+                {
+                    move.y += 0.2f;
+                    transform.position = move;
+                    yield return new WaitForSeconds(0.04f);
+                }
             }
-        }
-        else
-        {
-            aimedPos = new Vector3(0, 3, 0);
-            while (transform.position.y > aimedPos.y)
+            else
             {
-                print(aimedPos.y);
-                move.y -= 0.2f;
-                transform.position = move;
-                yield return new WaitForSecondsRealtime(5);
+                aimedPos = new Vector3(0, 3, 0);
+                while (transform.position.y > aimedPos.y)
+                {
+                    move.y -= 0.2f;
+                    transform.position = move;
+                    yield return new WaitForSeconds(0.04f);
+                }
             }
+            isdown = !isdown;
+            yield return new WaitForSeconds(duration);
         }
-        isdown = !isdown;
-        //transform.position = Vector3.MoveTowards(transform.position, aimedPos, 0.5f);
-        yield return new WaitForSeconds(duration*10);
+     
     }
 }

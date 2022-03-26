@@ -7,6 +7,8 @@ public class PlayerMove : MonoBehaviour
     public int score = 0;
     public float speed = 15f;
     private Vector3 startpos;
+    private bool hasReward = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +35,10 @@ public class PlayerMove : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Reward") == true)
-        {
+        { 
+            transform.Rotate(0, 180, 0);
             Destroy(collision.gameObject);
+            hasReward = true;
             score++;
         }
         else if (collision.gameObject.tag.Equals("Barrier") == true)
