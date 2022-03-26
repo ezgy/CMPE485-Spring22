@@ -14,12 +14,6 @@ public class BarrierMove : MonoBehaviour
         StartCoroutine(Move());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator Move()
     {
         while (true)
@@ -39,7 +33,7 @@ public class BarrierMove : MonoBehaviour
             }
             else
             {
-                aimedPos = new Vector3(0, 3, 0);
+                aimedPos = new Vector3(0, 3.7f, 0);
                 while (transform.position.y > aimedPos.y)
                 {
                     move.y -= 0.2f;

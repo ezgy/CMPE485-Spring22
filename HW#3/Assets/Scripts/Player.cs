@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public int score = 0;
     public float speed = 15f;
     private Vector3 startpos;
     private bool hasReward = false;
@@ -42,18 +41,22 @@ public class PlayerMove : MonoBehaviour
             restartbutton.SetActive(true);
 
         }
+        else if(!hasReward)
+        {
+            GameObject reward = GameObject.FindWithTag("Reward");
+            float distance = Vector3.Distance(transform.position, reward.transform.position);
+            if(distance < 3 && Input.GetKey("up"))
+            {
+                Destroy(reward);
+                hasReward = true;
+                transform.Rotate(0, 180, 0);
+            }
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Reward") == true)
-        { 
-            transform.Rotate(0, 180, 0);
-            Destroy(collision.gameObject);
-            hasReward = true;
-            score++;
-        }
-        else if (collision.gameObject.tag.Equals("Barrier") == true)
+       if (collision.gameObject.tag.Equals("Barrier") == true)
         {
             Time.timeScale = 0;
             restartbutton.SetActive(true);
