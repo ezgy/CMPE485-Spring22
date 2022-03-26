@@ -730,6 +730,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 17.075, y: 23.526, z: 5.203}
+--- !u!1 &1417550570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7999707565551985077, guid: 44eeb64416253894db05176fb076ec7b, type: 3}
+  m_PrefabInstance: {fileID: 7999707566387846170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1417550571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417550570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc43bd86402dc9643b6742bc411be004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606077212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1154,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7999707565551985066, guid: 44eeb64416253894db05176fb076ec7b, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7999707565551985070, guid: 44eeb64416253894db05176fb076ec7b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1185,5 +1206,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aladdin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7999707565551985071, guid: 44eeb64416253894db05176fb076ec7b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44eeb64416253894db05176fb076ec7b, type: 3}

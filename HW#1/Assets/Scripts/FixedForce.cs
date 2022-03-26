@@ -15,6 +15,6 @@ public class FixedForce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        body.AddForce(3, 3, 3);
+        body.AddForce(4, 4, 4);
     }
 }
