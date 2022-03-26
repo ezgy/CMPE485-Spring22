@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public int score = 0;
     public float speed = 15f;
+    private Vector3 startpos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startpos = transform.position;   
     }
 
     // Update is called once per frame
@@ -26,5 +28,18 @@ public class PlayerMove : MonoBehaviour
         }
 
         transform.position = vec;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Reward") == true)
+        {
+            Destroy(collision.gameObject);
+            score++;
+        }
+        else if (collision.gameObject.tag.Equals("Barrier") == true)
+        {
+            transform.position = startpos;
+        }
     }
 }
