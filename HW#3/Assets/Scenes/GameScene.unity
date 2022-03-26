@@ -192,13 +192,14 @@ GameObject:
   - component: {fileID: 30457036}
   - component: {fileID: 30457035}
   - component: {fileID: 30457034}
+  - component: {fileID: 30457037}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &30457033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -262,7 +263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 30457035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 30457037}
+        m_TargetAssemblyTypeName: RestartLevel, Assembly-CSharp
+        m_MethodName: ReloadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &30457035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +314,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30457032}
   m_CullTransparentMesh: 1
+--- !u!114 &30457037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30457032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5bee89e0ff72846b21c62694517abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &125200550
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +603,10 @@ PrefabInstance:
     - target: {fileID: 4020983980232809014, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
       propertyPath: m_Name
       value: Fox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020983980232809014, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361374554138886284, guid: 9fedecbd1aa68924b816f15cb97e611a, type: 3}
       propertyPath: m_RootOrder
@@ -1297,6 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   speed: 15
+  restartbutton: {fileID: 30457032}
 --- !u!65 &1986910935
 BoxCollider:
   m_ObjectHideFlags: 0

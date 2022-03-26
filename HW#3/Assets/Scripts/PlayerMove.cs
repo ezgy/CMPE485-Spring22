@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float speed = 15f;
     private Vector3 startpos;
     private bool hasReward = false;
+    public GameObject restartbutton;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,16 @@ public class PlayerMove : MonoBehaviour
         transform.position = vec;
     }
 
+    void LateUpdate()
+    {
+        if(hasReward && transform.position.x <= startpos.x)
+        {
+            Time.timeScale = 0;
+            restartbutton.SetActive(true);
+
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Reward") == true)
@@ -43,7 +54,8 @@ public class PlayerMove : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Barrier") == true)
         {
-            transform.position = startpos;
+            Time.timeScale = 0;
+            restartbutton.SetActive(true);
         }
     }
 }
