@@ -8,12 +8,16 @@ public class Player : MonoBehaviour
     private Vector3 startpos;
     private bool hasReward = false;
     public GameObject restartbutton;
+    private bool pov = false;
+    public GameObject cam1;
+    public GameObject cam2;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
-        startpos = transform.position;   
+        startpos = transform.position;
+        GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
@@ -24,19 +28,30 @@ public class Player : MonoBehaviour
         if (Input.GetKey("right"))
         {
             vec.x += speed * Time.deltaTime;
+            GetComponent<Animator>().Play("Fox_Walk");
+
         }
         if (Input.GetKey("left"))
         {
             vec.x -= speed * Time.deltaTime;
+            GetComponent<Animator>().Play("Fox_Walk");
         }
 
         transform.position = vec;
+
+        if (Input.GetKeyDown("space"))
+        {
+            pov = !pov;
+            cam2.SetActive(pov);
+            cam1.SetActive(!pov);
+        }
     }
 
     void LateUpdate()
     {
         if(hasReward && transform.position.x <= startpos.x)
         {
+            GetComponent<AudioSource>().Stop();
             Time.timeScale = 0;
             restartbutton.SetActive(true);
 
@@ -47,7 +62,10 @@ public class Player : MonoBehaviour
             float distance = Vector3.Distance(transform.position, reward.transform.position);
             if(distance < 3 && Input.GetKey("up"))
             {
-                Destroy(reward);
+                GetComponent<AudioSource>().Pause();
+                reward.GetComponent<AudioSource>().Play();
+                Destroy(reward, 0.6f);
+                GetComponent<AudioSource>().UnPause();
                 hasReward = true;
                 transform.Rotate(0, 180, 0);
             }
@@ -58,6 +76,7 @@ public class Player : MonoBehaviour
     {
        if (collision.gameObject.tag.Equals("Barrier") == true)
         {
+            GetComponent<AudioSource>().Stop();
             Time.timeScale = 0;
             restartbutton.SetActive(true);
         }

@@ -6,7 +6,8 @@ public class BarrierMove : MonoBehaviour
 {
     private float duration = 1f;
     private bool isdown = true;
-    private Vector3 aimedPos; 
+    private Vector3 aimedPos;
+    public int difficulty = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class BarrierMove : MonoBehaviour
     {
         while (true)
         {
-            duration = Random.Range(0.03f, 3f);
+            duration = Random.Range(0.03f, 3f - difficulty);
             Vector3 move = transform.position;
             Vector3 start = transform.position;
             if (isdown)
@@ -28,7 +29,7 @@ public class BarrierMove : MonoBehaviour
                 {
                     move.y += 0.2f;
                     transform.position = move;
-                    yield return new WaitForSeconds(0.04f);
+                    yield return new WaitForSeconds(0.04f - difficulty * 0.01f);
                 }
             }
             else
@@ -38,7 +39,7 @@ public class BarrierMove : MonoBehaviour
                 {
                     move.y -= 0.2f;
                     transform.position = move;
-                    yield return new WaitForSeconds(0.04f);
+                    yield return new WaitForSeconds(0.04f - difficulty * 0.01f);
                 }
             }
             isdown = !isdown;

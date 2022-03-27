@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Reward
   - Barrier
+  - Path
+  - DifficultySetting
   layers:
   - Default
   - TransparentFX
